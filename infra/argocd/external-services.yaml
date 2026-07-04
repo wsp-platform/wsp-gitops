@@ -1,32 +1,68 @@
+# PostgreSQL
 apiVersion: v1
 kind: Service
 metadata:
   name: postgres
   namespace: wsp
 spec:
-  type: ExternalName
-  externalName: host.k3s.internal
+  type: ClusterIP
   ports:
     - port: 5432
+      targetPort: 5432
 ---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: postgres
+  namespace: wsp
+subsets:
+  - addresses:
+      - ip: 192.168.0.103
+    ports:
+      - port: 5432
+---
+# Redis
 apiVersion: v1
 kind: Service
 metadata:
   name: redis
   namespace: wsp
 spec:
-  type: ExternalName
-  externalName: host.k3s.internal
+  type: ClusterIP
   ports:
     - port: 6379
+      targetPort: 6379
 ---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: redis
+  namespace: wsp
+subsets:
+  - addresses:
+      - ip: 192.168.0.103
+    ports:
+      - port: 6379
+---
+# DynamoDB Local
 apiVersion: v1
 kind: Service
 metadata:
   name: dynamodb
   namespace: wsp
 spec:
-  type: ExternalName
-  externalName: host.k3s.internal
+  type: ClusterIP
   ports:
     - port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: dynamodb
+  namespace: wsp
+subsets:
+  - addresses:
+      - ip: 192.168.0.103
+    ports:
+      - port: 8000
