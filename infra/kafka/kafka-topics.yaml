@@ -1,0 +1,69 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: chat-messages
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: wsp-kafka
+spec:
+  partitions: 3
+  replicas: 1
+  config:
+    retention.ms: "604800000"
+    cleanup.policy: delete
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: chat-read-receipts
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: wsp-kafka
+spec:
+  partitions: 3
+  replicas: 1
+  config:
+    retention.ms: "604800000"
+    cleanup.policy: delete
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: presence-events
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: wsp-kafka
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    retention.ms: "86400000"
+    cleanup.policy: delete
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: group-events
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: wsp-kafka
+spec:
+  partitions: 3
+  replicas: 1
+  config:
+    retention.ms: "604800000"
+    cleanup.policy: delete
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: notifications
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: wsp-kafka
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    retention.ms: "86400000"
+    cleanup.policy: delete
