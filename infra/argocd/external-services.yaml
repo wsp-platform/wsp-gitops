@@ -17,7 +17,7 @@ metadata:
   namespace: wsp
 subsets:
   - addresses:
-      - ip: 192.168.0.103
+      - ip: 192.168.0.102
     ports:
       - port: 5432
 ---
@@ -40,7 +40,7 @@ metadata:
   namespace: wsp
 subsets:
   - addresses:
-      - ip: 192.168.0.103
+      - ip: 192.168.0.102
     ports:
       - port: 6379
 ---
@@ -63,6 +63,6 @@ metadata:
   namespace: wsp
 subsets:
   - addresses:
-      - ip: 192.168.0.103
+      - ip: 192.168.0.102
     ports:
       - port: 8000
